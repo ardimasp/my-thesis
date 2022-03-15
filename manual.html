@@ -1,0 +1,246 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05 [en] (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY>
+
+<CENTER>
+<H1>
+JTHESIS</H1></CENTER>
+
+<CENTER>
+<H1>
+A PhD Thesis Style File</H1></CENTER>
+
+<CENTER>
+<ADDRESS>
+by</ADDRESS></CENTER>
+
+<CENTER>
+<ADDRESS>
+George Taylor</ADDRESS></CENTER>
+
+<CENTER>
+<ADDRESS>
+<A HREF="mailto:gstaylor@iee.org">gstaylor@iee.org</A></ADDRESS></CENTER>
+
+<CENTER>
+<DT>
+Current maintainer: <A HREF="mailto:gstaylor@iee.org">gstaylor@iee.org</A></DT></CENTER>
+
+<CENTER>&nbsp;</CENTER>
+
+<CENTER>&nbsp;&nbsp;&nbsp; Current version: 1</CENTER>
+
+<CENTER>(see jthesis.cls for minor revision number)</CENTER>
+
+<H3>
+Introduction</H3>
+<FONT FACE="Courier New,Courier">jthesis</FONT> is a LaTeX 2e class file
+intended for formatting a PhD thesis in the Department of Electrical Engineering
+at the University if Edinburgh. You should not need to hack around with
+<FONT FACE="Courier New,Courier">\vspace </FONT>and other such commands
+when using this class file.
+<H3>
+Bugs and feedback</H3>
+Please report all problems and suggestions to the maintainer above. If
+you find you need to hack this style file to make it do something differently
+to suit your taste please consider adding it as an option, or contact the
+maintainer to have it added as an option. This will avoid many partially-working
+and undocumented variants circulating around.
+<H3>
+Copyright</H3>
+This software is licensed under the GNU General Public Licence (GPL), which
+explains why you can copy it and why there is no warranty.
+<H3>
+Requirements</H3>
+LaTeX 2e (1996/12/01) or later. The following packages are needed: report,
+graphicx, fancyheadings, citesort, doublespace, float, ifthen, caption,
+afterpage.
+<H3>
+Acknowledgements</H3>
+Thanks to Rudy Tanner and Sarat Patra for their help in testing and debugging.
+<H3>
+Contents</H3>
+An example thesis document using the <FONT FACE="Courier New,Courier">jthesis</FONT>
+style file is included. Please see <A HREF="CONTENTS">CONTENTS</A> for
+a list of files.
+<BR>&nbsp;
+<H3>
+Compiling the example</H3>
+First copy the whole of the ThesisStyleFile directory into your own account:
+<PRE>cp -r /home/sasg/Latex/ThesisStyleFile&nbsp; MyCopy</PRE>
+Now run LaTeX and BibTeX and view the result:
+<PRE>cd MyCopy</PRE>
+
+<PRE>texsetup</PRE>
+
+<PRE>latex thesis</PRE>
+
+<PRE>bibtex thesis</PRE>
+
+<PRE>latex thesis</PRE>
+
+<PRE>latex thesis</PRE>
+
+<PRE>dvips thesis.dvi -o thesis.ps</PRE>
+
+<PRE>gv thesis.ps</PRE>
+
+<H3>
+List of options, commands and features</H3>
+Most of the new features of this style file that you need to know about
+are documented in comments in the example thesis files, however a list
+of new commands and things performed by the style file is given below.
+<BR>&nbsp;
+<H4>
+Document options</H4>
+
+<DT>
+<FONT FACE="Courier New,Courier">nohyphens</FONT></DT>
+
+<DT>
+This document option turns off hyphenation. The University guidelines suggest
+this but it can make for some ugly formatting. It also allows the formatting
+to be more sloppy so that the chance of long lines</DT>
+
+<DT>
+sticking into the right hand margin is reduced. Try it and see if you like
+it or not.</DT>
+
+<DT>
+<FONT FACE="Courier New,Courier">doublespace</FONT></DT>
+
+<DD>
+Normally you want this option to give one-and-a-half spacing, however for
+printing out draft copies during writing removing this option will save
+paper.</DD>
+
+<DT>
+t<FONT FACE="Courier New,Courier">woside</FONT></DT>
+
+<DD>
+Produce double sided output.</DD>
+
+<H4>
+General style and appearance</H4>
+
+<LI>
+11pt type is used, on A4 paper, single column</LI>
+
+<LI>
+times font family is used (easier to read and gives a much smaller postscript
+file)</LI>
+
+<LI>
+margins are set according to University guidelines</LI>
+
+<LI>
+headings reflect the current chapter title</LI>
+
+<LI>
+chapter title style is redefined, with nice horizontal ruling!</LI>
+
+<LI>
+paragraph indentation and spacing is redefined, as is spacing after section
+titles</LI>
+
+<LI>
+double sided output (twoside) works, chapters always start on right hand
+page</LI>
+
+<LI>
+quotations are single spaced (as defined by University guidelines)</LI>
+
+<LI>
+bibliography is retitled 'references'</LI>
+
+<LI>
+roman page numbering at start, arabic later for real chapters</LI>
+
+<LI>
+double spacing is not used for contents, lists of tables and figures and
+references</LI>
+
+<H4>
+Tips</H4>
+
+<LI>
+use commands from the <FONT FACE="Courier New,Courier">graphicx</FONT>
+package for inclusion of graphics</LI>
+
+<LI>
+use <FONT FACE="Courier New,Courier">[H]</FONT> as a float position specifier
+to mean really-here</LI>
+
+<LI>
+use <FONT FACE="Courier New,Courier">amstex </FONT>package for better maths</LI>
+
+<LI>
+use <FONT FACE="Courier New,Courier">subfigure</FONT> package for multiple
+parts to figures with subcaptions</LI>
+
+<H4>
+Commands</H4>
+
+<DT>
+<FONT FACE="Courier New,Courier">\crestfile{filename}</FONT></DT>
+
+<DD>
+Specify the name of the EPS file to use for University Crest on the front
+title page.</DD>
+
+<DT>
+<FONT FACE="Courier New,Courier">\minorchapter{title}</FONT></DT>
+
+<DD>
+Start a new minor chapter. Minor chapters are the ones which come before
+your first real chapter, for example acknowledgements.</DD>
+
+<DT>
+<FONT FACE="Courier New,Courier">\startchapters</FONT></DT>
+
+<DD>
+Indicate that real chapters are about to start. This currently just sets
+arabic page numbering, but may do more in the future.</DD>
+
+<DT>
+<FONT FACE="Courier New,Courier">\contentsandlists</FONT></DT>
+
+<DD>
+Insert a table of contents, list of figures and list of tables (with table
+of contents entries).</DD>
+
+<DT>
+<FONT FACE="Courier New,Courier">\insertreferences{file1,file2,file3}</FONT></DT>
+
+<DD>
+Insert references using IEEE style and single spacing.</DD>
+
+<DT>
+<FONT FACE="Courier New,Courier">\image[options-to-\includegraphics]{filename}{label}{caption}</FONT></DT>
+
+<DD>
+Useful macro to insert a centered float&nbsp; using the <FONT FACE="Courier New,Courier">graphicsx</FONT>
+package.</DD>
+
+<DT>
+&nbsp;<FONT FACE="Courier New,Courier">\flushfloats</FONT></DT>
+
+<DD>
+The current page will be finished as normal, the next new page will contain
+any floats</DD>
+
+<DD>
+&nbsp;which have not yet been placed (if any). This is useful if a few
+large or full-page floats</DD>
+
+<DD>
+are pushing other smaller diagrams towards the end of your chapter.</DD>
+
+<DD>
+</DD>
+
+</BODY>
+</HTML>

@@ -1,0 +1,4 @@
+bibtex thesis
+latex2e thesis.tex
+latex2e thesis.tex
+dvips thesis.dvi -o thesis.ps

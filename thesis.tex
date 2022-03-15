@@ -1,0 +1,370 @@
+% Exmaple thesis using jthesis class
+% Written by George Taylor (gstaylor@iee.org)
+%
+% Please mail all comments and changes to G.S.Taylor@ee.ed.ac.uk
+% so that this package can be kept up to date.
+
+\typeout{PhD Thesis class example}
+
+% Supported options to jthesis:
+%	nohyphens 		make hyphenation incredibly unlikely
+%				(the university guidelines suggest this)
+%				if you get an awakward line you will need
+%				to either change it, or use \-
+%
+%	doublespace		double space eveything except
+%				contents, lists of figures etc and references
+%				Personally I think double spacing sucks.
+%				Use \begin,end{singlespace} for exceptions.
+%				(safe to use even when doublespace option
+%				 not given)
+%
+% Other options (not part of jthesis) which you may wish to use:
+% twoside - for two sided output
+% fleqn - left indented (rather than centered) equations
+%
+\documentclass[doublespace,twoside]{StyleFiles/jthesis-v1}
+
+% By default a eps file of the University Crest is assumed to be
+% in the StyleFiles directory. However you may wish to give a full
+% absolute pathname here so that xdvi, dvips etc work even when run
+% from another directory.
+%\crestfile{/home/gst/PhD/Thesis/StyleFiles/EdUniCrest.eps}
+
+% The array package extends tabular, for example useful for <{$},>{$}
+% when using tables of symbols
+\usepackage{array}
+
+% It is recommended you use amsmath for better looking equations,
+% but the jthesis class does not enforce this.
+\usepackage{amsmath}
+
+% Use subfigure to put multiple figures into one - complete with
+% mini captions.
+% \usepackage{subfig}
+
+% Other useful packages you might not otherwise find out about:
+
+% \usepackage{psfrag}	% replace labels in xfig diagrams with nice math
+% \usepackage{endfloat} % put all floats at end
+% \usepackage{shadow}   % for shadowed boxed round things
+% \usepackage{bar}	% for bar charts
+% \usepackage{draftcopy} % prints DRAFT across each page in big grey letters
+% \usepackage{mathtime}  % for times font style maths (may require some fonts)
+% see also the documentation for the graphicx package providing
+% support for postscript images and colour (already \usepackage'd)
+
+
+
+% Tip: If you include your own .sty/.cls files with \usepackage
+% instead of \include separate .aux files will not be generated for
+% each included file.
+%\usepackage{StyleFiles/mymacros}
+
+
+% Tip: use \includeonly to only include one thing and ignore all other
+% \include commands, this is handy for formatting only one chapter
+% at a time
+%\includeonly{Chapter1/chapter1}
+
+\usepackage[font=footnotesize]{caption}
+\usepackage[font=footnotesize]{subcaption}
+% \usepackage{caption}
+% \usepackage{subcaption}
+\usepackage[labelsep=period]{caption}
+\usepackage[hyphens]{url}
+\usepackage[hyphenbreaks]{breakurl}
+
+\usepackage{lipsum}
+
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{listings}
+
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+
+
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+% \usepackage[natbibapa]{apacite}
+\usepackage{apacite}
+\makeatletter
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\@cite}{\def\@BBOP{[}\def\@BBCP{]}}{}{}
+\makeatother
+
+\makeatother
+
+\usepackage{algorithm}
+
+
+% 
+% \usepackage{breakcites}
+
+\newcommand\figref{Figure~\ref}
+\newcommand\figsref{Figures~\ref}
+
+\usepackage{glossaries-prefix}
+
+\usepackage[font=itshape]{quoting}
+\usepackage{enumitem}
+\usepackage{dsfont}
+
+% \usepackage{natbib}
+% \usepackage{bibunits}
+
+\usepackage{xspace}
+\newcommand{\owcsimpy}{\texttt{owcsimpy}\xspace}
+\newcommand{\fx}[2]{{#1}_{\text{{#2}}}}
+\newcommand{\EX}[1]{{\mathbb{E}}\left[{#1}\right]}
+\newcommand{\EXs}[2]{{\mathbb{E}}_{{#1}~}\!\!\left[{#2}\right]}
+\newcommand{\Es}{E_\text{s}}
+
+\newcommand{\colredb}[1]{{ \chardef\MyArticleWithColor=\pdfcolorstackinit page direct{0 g}
+\pdfcolorstack\MyArticleWithColor push {1 0 0 rg}
+{#1}
+\pdfcolorstack\MyArticleWithColor pop }}
+\newcommand{\colblueb}[1]{{ \chardef\MyArticleWithColor=\pdfcolorstackinit page direct{0 g}
+\pdfcolorstack\MyArticleWithColor push {0 0 1 rg}
+{#1}
+\pdfcolorstack\MyArticleWithColor pop }}
+
+
+
+\usepackage{siunitx}
+% \usepackage{caption}
+
+% \captionsetup{belowskip=-10pt}
+% \setlength{\belowcaptionskip}{-100pt}
+
+\makeatletter
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+% \usepackage[acronym]{glossaries}
+\makeglossaries
+% \newacronym[
+%     prefixfirst={a\ },% prefix used on first use
+%     prefix={an\ }% prefix used on subsequent use
+% ]
+\newacronym[prefixfirst={a\ },prefix={an\ }]{3gpp}{3GPP}{3\textsuperscript{rd}\ generation partnership project}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{acf}{ACF}{autocorrelation function}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{aco}{ACO}{asymmetrically clipped optical}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{adc}{ADC}{analog-to-digital converter}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{agc}{AGC}{automatic gain controller}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ap}{AP}{access point}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{apd}{APD}{avalanche photodiode}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{atsss}{ATSSS}{access traffic steering, switching and splitting}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{awgn}{AWGN}{additive white Gaussian noise}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{ber}{BER}{bit error ratio}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{cad}{CAD}{computer-aided design}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{cctv}{CCTV}{closed-circuit television}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{cdf}{CDF}{cumulative distribution function}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{cir}{CIR}{channel impulse response}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{cli}{CLI}{command-line interface}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{csmaca}{CSMA/CA}{carrier sense multiple access with collision avoidance}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{cp}{CP}{cyclic prefix}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dash}{DASH}{dynamic adaptive streaming over HTTP}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dac}{DAC}{digital-to-analog converter}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dc}{DC}{direct current}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dfe}{DFE}{decision feedback equalization}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dft}{DFT}{discrete Fourier transform}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dpss}{DPSS}{discrete prolate spheroidal sequences}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dsp}{DSP}{digital signal processor}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{dqo}{DQO}{decomposed quadrature optical}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{eu}{eU}{enhanced unipolar}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{eo}{E/O}{electrical-to-optical}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{eesm}{EESM}{exponential effective SINR metric}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{esm}{ESM}{effective \gls{sinr} mapping}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fcc}{FCC}{federal communications  commission}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fde}{FDE}{frequency-domain equalization}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fec}{FEC}{forward error correction}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fft}{FFT}{fast fourier transform}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fir}{FIR}{finite impulse response}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fov}{FoV}{field-of-view}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fst}{FST}{fast session transfer}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{ftp}{FTP}{file transfer protocol}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{fwhm}{FWHM}{full width at half maximum}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{gtim}{GTIM}{generalized time index modulation}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{hetnets}{HetNets}{heterogeneous networks}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{hpf}{HPF}{high-pass filter}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{html}{HTML}{hypertext markup language}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{he}{HE}{high efficiency}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{http}{HTTP}{hypertext transfer protocol}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{iaas}{IaaS}{infrastructure as a service}
+\newacronym[prefixfirst={am\ },prefix={an\ }]{idft}{IDFT}{inverse discrete Fourier transform}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{iec}{IEC}{International Electrotechnical Commission}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ieee}{IEEE}{Institute of Electrical and Electronics Engineers}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{iid}{IID}{identically independently distributed}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{im}{IM}{index modulation}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{imdd}{IM/DD}{intensity modulation and direct detection}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ip}{IP}{internet protocol}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{iq}{IQ}{in-phase and quadrature}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ir}{IR}{infrared}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{isi}{ISI}{inter-symbol interference}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{itut}{ITU-T}{International Telecommunication Union - Telecommunication Standardization Sector}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{ksd}{KSD}{Kolmogorov-Smirnov distance}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lc}{LC}{light communications}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{ld}{LD}{laser diode}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{ldpc}{LDPC}{low-density parity-check}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{le}{LE}{linear equalizer}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{led}{LED}{light emitting diode}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{lifi}{LiFi}{light fidelity}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{los}{LoS}{line of sight}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lpf}{LPF}{low-pass filter}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lsb}{LSB}{least significant bit}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lsf}{LSF}{local scattering function}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lssa}{LSSA}{least-squares spectral analysis}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lti}{LTI}{linear time-invariant}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{lut}{LUT}{lookup table}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mac}{MAC}{medium access control}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mcs}{MCS}{modulation and coding scheme}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{miesm}{MIESM}{mutual information effective SINR metric}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mimo}{MIMO}{multiple-input, multiple-output}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mmse}{MMSE}{minimum mean square error}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mpdu}{MPDU}{MAC protocol data unit} 
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mptcp}{MPTCP}{multipath transmission control protocol} 
+\newacronym[prefixfirst={a\ },prefix={an\ }]{msb}{MSB}{most significant bit}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{mse}{MSE}{mean square error}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{nic}{NIC}{network interface card}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{oam}{OAM}{orbital angular momentum}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{occ}{OCC}{optical camera communications}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ofdm}{OFDM}{orthogonal frequency-division multiplexing}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ofdma}{OFDMA}{orthogonal frequency-division multiple access}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{ook}{OOK}{on-off-keying modulation}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{oop}{OOP}{object-oriented programming}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{oe}{O/E}{optical-to-electrical}
+\newacronym[prefixfirst={an\ },prefix={an\ }]{owc}{OWC}{optical wireless communications}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pam}{PAM}{pulse amplitude modulation}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{papr}{PAPR}{peak-to-average power ratio}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pd}{PD}{photodiode}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pdf}{PDF}{probability density function}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pep}{PEP}{pairwise-error probability}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{per}{PER}{packet error ratio}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{phy}{PHY}{physical}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pin}{PIN}{positive-intrinsic-negative photodiode}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pm}{PM}{position modulating}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{ppm}{PPM}{pulse position modulating}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{ppdu}{PPDU}{physical layer convergence procedure protocol data unit}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{pts}{P/S}{parallel-to-serial}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{ps}{PS}{power spectrum}
+\newacronym[plural=PSDs,firstplural=power spectral densities (PSD),prefixfirst={a\ },prefix={n\ }]{psd}{PSD}{power spectral density}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{qam}{QAM}{quadrature amplitude modulation}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rbir}{RBIR}{received bit mutual information rate}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rco}{RCO}{repetition and clipping optical}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rf}{RF}{radio frequency}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rp}{RP}{random process}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{ru}{RU}{resource unit}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rtsp}{RTSP}{real-time streaming protocol}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rv}{RV}{random variable}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{rwp}{RWP}{random waypoint}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{scfde}{SCFDE}{single-carrier with frequency domain equalization}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{sdn}{SDN}{software-defined networking}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{sic}{SIC}{successive interference cancellation}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{sifs}{SIFS}{short inter frame space}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{siso}{SISO}{single-input and single-output}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{sinr}{SINR}{signal-to-interference-plus-noise ratio}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{sm}{SM}{spatial modulation}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{snr}{SNR}{signal-to-noise ratio}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{sta}{STA}{station}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{stp}{S/P}{serial-to-parallel}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{tcp}{TCP}{transmission control protocol}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{tgax}{TGax}{IEEE 802.11 High Efficiency - Task Group ``ax''}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{tgbb}{TGbb}{\gls{ieee} 802.11 Light Communications Amendment - Task Group ``bb''}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{thp}{THP}{Tomlinson-Harashima precoder}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{tia}{TIA}{transimpedance amplifier}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{tim}{TIM}{time index modulation}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{u}{U}{unipolar}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{vcsel}{VCSEL}{vertical-cavity surface-emitting laser}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{vga}{VGA}{variable gain amplifier}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{vl}{VL}{visible light}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{vlc}{VLC}{visible light communications}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{vlp}{VLP}{visible light positioning}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{vpn}{VPN}{virtual private network}
+\newacronym[prefixfirst={a\ },prefix={an\ }]{usb}{USB}{universal serial bus}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{wdm}{WDM}{wavelength division multiplexing}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{wmf}{WMF}{whitened matched filter}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{woc}{WOC}{wireless optical channel}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{wocir}{WOCIR}{wireless optical channel impulse response}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{wss}{WSS}{wide-sense stationary}
+\newacronym[prefixfirst={a\ },prefix={a\ }]{wssus}{WSSUS}{wide-sense stationary uncorrelated scattering}
+
+\usepackage{longtable}
+
+
+
+
+\begin{document}
+
+% Put your title, your name, and submission date here
+% use \date{} if you don't want a date, todays date is used
+% if \date is omitted.
+
+\title{Your awesome thesis}
+\author{Your beautiful name}
+\date{\today}
+
+\maketitle
+
+% If you look in the included files you will notice the use of
+% \minorchapter.
+
+\include{Preliminary/laysummary}
+\include{Preliminary/abstract}
+\include{Preliminary/declaration}
+\include{Preliminary/acknowledgements}
+
+% % Insert table of contents and lists of figures and tables.
+\contentsandlists
+
+% % More use of minorchapter
+\include{Preliminary/abbreviations}
+\include{Preliminary/nomenclature}
+
+% \startchapters indicates the main chapters follow, this changes
+% things such as the page numbering.
+\startchapters
+
+\include{ch_intro/ch_intro}
+\include{ch_background/ch_background}
+
+
+% \appendix indicates from now on \chapter generates an appendix
+% rather than a normal chapter.
+\appendix
+
+\include{Appendix/app_owcsimpy}
+
+% \let\cleardoublepage\clearpage
+
+% \insertreferences inserts the list of references using the IEEE style
+% and updates the table of contents. The single argument is a comma
+% spearated list of .bib files (just as in \bibliography)
+\insertreferences{References/thesis}
+% \bibliographystyle{apalike}
+% \bibliography{./References/thesis.bib}
+
+% that's all folks!
+\end{document}

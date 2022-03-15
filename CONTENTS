@@ -1,0 +1,27 @@
+
+	These files are all part of an example thesis:
+
+Appendix/		appendices go in here
+Chapter1/		chapter 1 of the thesis, tex and graphics
+Preliminary/		directory for abstracts, etc etc
+References/		directory for bibliography files
+makethesis		make the thesis (not a proper make file)
+thesis.tex		main document
+
+        If the example has been built there will be other files present,
+	e.g. thesis.dvi thesis.aux etc
+
+
+StyleFiles/
+  jthesis.cls
+	The Latex2e class package for formatting your thesis.
+  EdUniCrest.eps
+	University crest for the front page.
+
+
+CONTENTS
+	This file
+
+manual.html
+	Instructions for use.
+
