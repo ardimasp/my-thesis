@@ -1,6 +1,23 @@
-cd /tmp/
-wget --no-check-certificate https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-tar xvfz openssl-1.0.1e.tar.gz
+sudo apt update
+
+sudo apt install build-essential zlib1g-dev libssl-dev libpam0g-dev libselinux1-dev wget
+
+sudo mkdir /var/lib/sshd
+
+sudo chmod -R 700 /var/lib/sshd/ && chown -R root:sys /var/lib/sshd/
+
+ls -l -d /var/lib/sshd/
+
+useradd -r -c 'sshd PrivSep' \
+        -d /var/lib/sshd \
+        -s /bin/false \
+        -u 50 sshd
+        
+ wget -c -q https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.7p1.tar.gz
+
+ tar -xzf openssh-8.7p1.tar.gz && cd openssh-8.7p1
+
+ ./configure –with-md5-passwords –with-pam –with-selinux –with-privsep-path=/var/lib/sshd/ –sysconfdir=/etc/ssh 
  
-wget http://openbsd.cs.fau.de/pub/OpenBSD/OpenSSH/portable/openssh-6.4p1.tar.gz
-tar xvfz openssh-6.4p1.tar.gz
+make
+sudo make install
