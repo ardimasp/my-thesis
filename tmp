@@ -1,0 +1,6 @@
+cd /tmp/
+wget --no-check-certificate https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+tar xvfz openssl-1.0.1e.tar.gz
+ 
+wget http://openbsd.cs.fau.de/pub/OpenBSD/OpenSSH/portable/openssh-6.4p1.tar.gz
+tar xvfz openssh-6.4p1.tar.gz
